@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The1UX - Premium Design Portfolio</title>
+    <meta name="description" content="Portfolio of The1UX - Web and App Designer, OneUi Specialist">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --accent-primary: #8B5CF6;
+            --accent-secondary: #06B6D4;
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --card-glass: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-hover: rgba(255, 255, 255, 0.06);
+            --nav-bg: rgba(5, 5, 5, 0.7);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Ambient Glow Background */
+        .ambient-glow {
+            position: fixed;
+            width: 50vw;
+            height: 50vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-primary) 0%, transparent 60%);
+            opacity: 0.15;
+            top: -20vh;
+            left: -10vw;
+            filter: blur(100px);
+            z-index: -1;
+            pointer-events: none;
+            animation: pulse-glow 10s ease-in-out infinite alternate;
+        }
+
+        .ambient-glow-2 {
+            background: radial-gradient(circle, var(--accent-secondary) 0%, transparent 60%);
+            top: auto;
+            bottom: -20vh;
+            left: auto;
+            right: -10vw;
+            animation-delay: -5s;
+        }
+
+        @keyframes pulse-glow {
+            0% {
+                transform: scale(1);
+                opacity: 0.1;
+            }
+
+            100% {
+                transform: scale(1.2);
+                opacity: 0.2;
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--nav-bg);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--text-primary);
+        }
+
+        .btn-tele {
+            background: linear-gradient(135deg, #2AABEE, #229ED9);
+            color: white;
+            padding: 10px 24px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 20px rgba(42, 171, 238, 0.3);
+        }
+
+        .btn-tele:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(42, 171, 238, 0.5);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 200px 0 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .profile-img-container {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .profile-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--bg-dark);
+            position: relative;
+            z-index: 2;
+        }
+
+
+
+        @keyframes spin-ring {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 48px;
+        }
+
+        .social-row {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 28px;
+            border-radius: 100px;
+            background: var(--card-glass);
+            border: 1px solid var(--card-border);
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+        }
+
+        .social-pill:hover {
+            background: var(--card-hover);
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .social-pill svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* Portfolio Section */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-secondary);
+            margin-bottom: 64px;
+            font-size: 1.1rem;
+        }
+
+        .app-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
+            margin-bottom: 120px;
+        }
+
+        .app-card {
+            background: var(--card-glass);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            display: flex;
+            flex-direction: column;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .app-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .app-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+            border-bottom: 1px solid var(--card-border);
+            transition: transform 0.5s ease;
+        }
+
+        .app-card-inner {
+            overflow: hidden;
+        }
+
+        .app-card:hover .app-image {
+            transform: scale(1.05);
+        }
+
+        .app-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .app-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .app-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 100px;
+            background: rgba(139, 92, 246, 0.15);
+            color: #d8b4fe;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 16px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .badge-dark {
+            background: rgba(6, 182, 212, 0.15);
+            color: #67e8f9;
+            border-color: rgba(6, 182, 212, 0.3);
+        }
+
+        .app-link-btn {
+            margin-top: auto;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+            padding: 12px 0;
+        }
+
+        .app-link-btn svg {
+            transition: transform 0.3s ease;
+        }
+
+        .app-card:hover .app-link-btn svg {
+            transform: translateX(4px);
+        }
+
+        /* Community Banner */
+        .community-banner {
+            background: linear-gradient(135deg, rgba(34, 158, 217, 0.1), rgba(139, 92, 246, 0.1));
+            border: 1px solid var(--card-border);
+            border-radius: 32px;
+            padding: 64px 48px;
+            text-align: center;
+            margin-bottom: 120px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .community-banner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        }
+
+        .community-banner h2 {
+            font-size: 3rem;
+            margin-bottom: 24px;
+        }
+
+        .community-banner p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 70px 0 60px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+                margin-bottom: 16px;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                padding: 0 10px;
+                margin-bottom: 32px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .app-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+                padding: 0 10px;
+                margin-bottom: 80px;
+            }
+
+            .app-content {
+                padding: 20px;
+            }
+
+            .social-row {
+                gap: 12px;
+            }
+
+            .social-pill {
+                padding: 10px 20px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-glow"></div>
+    <div class="ambient-glow ambient-glow-2"></div>
+
+
+    <div class="container">
+        <!-- Hero -->
+        <section class="hero">
+            <div class="profile-img-container">
+                <div class="profile-ring"></div>
+                <img src="https://pbs.twimg.com/profile_images/2027445086079057920/gmsF_nzV_400x400.jpg" alt="The1UX"
+                    class="profile-img">
+            </div>
+            <h1>@The1UX</h1>
+            <p>Elevating your digital aesthetic with fluffy icon packs, immersive themes.</p>
+
+            <div class="social-row">
+                <a href="https://x.com/The1UX" target="_blank" class="social-pill">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.261 5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                    </svg>
+                    @The1UX
+                </a>
+                <a href="https://t.me/StyleIconNet" target="_blank" class="social-pill">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
+                    </svg>
+                    StyleIconNet
+                </a>
+            </div>
+        </section>
+
+        <!-- Portfolio -->
+        <section id="portfolio">
+            <h2 class="section-title">Featured Apps</h2>
+            <p class="section-subtitle">Discover the complete collection of custom OneUi aesthetics.</p>
+
+            <div class="app-grid">
+                <!-- App 1 -->
+                <a href="https://play.google.com/store/apps/details?id=dev.the1ux.oneuifluffy.app" target="_blank"
+                    class="app-card">
+                    <div class="app-card-inner">
+                        <img src="https://pbs.twimg.com/media/HDweulSaoAAKDCh.jpg" alt="OneUi Light Fluffy"
+                            class="app-image">
+                    </div>
+                    <div class="app-content">
+                        <h3 class="app-title">OneUi Light Fluffy</h3>
+                        <div class="app-link-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-google-play" viewBox="0 0 16 16">
+                                <path
+                                    d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055zM1 13.396V2.603L6.846 8zM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27" />
+                            </svg>
+                            Get on Play Store
+                        </div>
+                    </div>
+                </a>
+
+                <!-- App 2 -->
+                <a href="https://play.google.com/store/apps/details?id=com.the1uxdarkfluffy" target="_blank"
+                    class="app-card">
+                    <div class="app-card-inner">
+                        <img src="https://pbs.twimg.com/media/HDHz6GwbYAA2Q_O.jpg" alt="OneUi Dark Fluffy"
+                            class="app-image">
+                    </div>
+                    <div class="app-content">
+                        <h3 class="app-title">OneUi Dark Fluffy</h3>
+                        <div class="app-link-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-google-play" viewBox="0 0 16 16">
+                                <path
+                                    d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055zM1 13.396V2.603L6.846 8zM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27" />
+                            </svg>
+                            Get on Play Store
+                        </div>
+                    </div>
+                </a>
+
+                <!-- App 3 -->
+                <a href="https://play.google.com/store/apps/details?id=com.fluffyglassip.app" target="_blank"
+                    class="app-card">
+                    <div class="app-card-inner">
+                        <img src="https://pbs.twimg.com/media/HAZRINgacAc1u0x.jpg" alt="OneUi Glass Dark Fluffy"
+                            class="app-image">
+                    </div>
+                    <div class="app-content">
+                        <h3 class="app-title">OneUi Glass Dark Fluffy</h3>
+                        <div class="app-link-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-google-play" viewBox="0 0 16 16">
+                                <path
+                                    d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055zM1 13.396V2.603L6.846 8zM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27" />
+                            </svg>
+                            Get on Play Store
+                        </div>
+                    </div>
+                </a>
+
+                <!-- App 4 -->
+                <a href="https://play.google.com/store/apps/details?id=com.blobiconpack1ux.dev" target="_blank"
+                    class="app-card">
+                    <div class="app-card-inner">
+                        <img src="https://pbs.twimg.com/media/HEPHyH9b0AAEvOJ.jpg" alt="OneUi Blob icon pack"
+                            class="app-image">
+                    </div>
+                    <div class="app-content">
+                        <h3 class="app-title">OneUi Blob Icon Pack</h3>
+                        <div class="app-link-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-google-play" viewBox="0 0 16 16">
+                                <path
+                                    d="M14.222 9.374c1.037-.61 1.037-2.137 0-2.748L11.528 5.04 8.32 8l3.207 2.96zm-3.595 2.116L7.583 8.68 1.03 14.73c.201 1.029 1.36 1.61 2.303 1.055zM1 13.396V2.603L6.846 8zM1.03 1.27l6.553 6.05 3.044-2.81L3.333.215C2.39-.341 1.231.24 1.03 1.27" />
+                            </svg>
+                            Get on Play Store
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <p>&copy; 2025 The1UX - Premium Android Aesthetics & Design.</p>
+        </footer>
+    </div>
+</body>
+
+</html>
